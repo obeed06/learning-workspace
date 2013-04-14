@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.fdm.orm.Person" table="person">
+        <id name="getId" type="UUID">
+            <column name="PER_ID"/>
+        </id>
+        <property name="firstName" type="string">
+            <column name="PER_FIRST_NAME" length="40" not-null="true"/>
+        </property>
+        <property name="lastName" type="string">
+            <column name="PER_LAST_NAME" length="40" not-null="true"/>
+        </property>
+        <property name="birthDate" type="java.util.Date">
+            <column name="PER_BIRTH_DATE"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       			http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="myJmsTemplate"
+          class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="sampleQueue"/>
+    </bean>
+
+    <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory">
+            <bean id="jmsFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL">
+                    <value>tcp://localhost:61616</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <bean id="sampleQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="defaultDestination"/>
+    </bean>
+
+    <bean id="simpleReceiver" class="com.fdm.SpringJMSProject.JmsSimpleReceiver">
+        <property name="destination" ref="sampleQueue"/>
+        <property name="jmsTemplate" ref="myJmsTemplate"/>
+    </bean>
+
+    <bean id="simpleSender" class="com.fdm.SpringJMSProject.JmsSimpleSender">
+        <property name="destination" ref="sampleQueue"/>
+        <property name="jmsTemplate" ref="myJmsTemplate"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:si="http://www.springframework.org/schema/integration"
+       xmlns:jms="http://www.springframework.org/schema/integration/jms"
+       
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd 
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration.xsd
+			http://www.springframework.org/schema/integration/jms
+			http://www.springframework.org/schema/integration/jms/spring-integration-jms.xsd">
+
+    <import resource="simple-spring-jms-context.xml"/>
+
+   	<si:poller default="true" fixed-delay="1000"/>
+
+    <si:channel id="jms.out"/>
+
+    <!-- Configure the Gateway to Send on the channel -->
+    <si:gateway id="myJmsGateway" service-interface="com.fdm.SpringJMSProject.springIntegration.SenderGateway"
+                default-request-channel="jms.out"/>
+
+
+    <jms:outbound-channel-adapter channel="jms.out" jms-template="myJmsTemplate"/>
+
+
+    <si:channel id="jms.in">
+        <si:queue capacity="10"/>
+    </si:channel>
+
+
+    <jms:inbound-channel-adapter channel="jms.in" connection-factory="connectionFactory"
+                                 destination="sampleQueue">
+        <!-- <si:poller default="false" max-messages-per-poll="1">
+           <si:interval-trigger interval="1000"/>
+        </si:poller> -->
+    </jms:inbound-channel-adapter>
+
+    <si:router input-channel="jms.in" method="displayIncommingMessages" ref="simpleReceiver"/>
+
+</beans>

@@ -9,6 +9,8 @@ bin/
 tmp/
 SpringJMSProject/target/
 grails_apps/racetrack/target-eclipse/
+grails_apps/racetrack/target/
+
 *.tmp
 *.bak
 *.swp

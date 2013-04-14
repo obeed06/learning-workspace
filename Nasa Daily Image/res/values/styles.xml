@@ -1,0 +1,6 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+    <color name="image_title_color">#000</color>
+
+</resources>

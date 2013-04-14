@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">Nasa Daily Image</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_nasa_daily_image">NasaDailyImage</string>
+    <string name="test_image_title">Next Station Crew Preps for Launch</string>
+    <string name="test_image_date">Fri, 28 Sep 2012 00:00:00 EDT</string>
+    <string name="test_image_description">NASA astronaut Kevin Ford (left), Expedition 33 flight engineer and Expedition 34 commander; Soyuz Commander Oleg Novitskiy (center) and Flight Engineer Evgeny Tarelkin (right) clasp hands Sept. 21, 2012 in front of a Soyuz vehicle mock-up as they wrap up two days of final qualification exams at the Gagarin Cosmonaut Training Center in Star City, Russia. The trio is scheduled to launch Oct. 23 in their Soyuz TMA-06M spacecraft from the Baikonur Cosmodrome in Kazakhstan for a five-month mission on the International Space Station. ---------------test data</string>
+	<string name="setwallpaper">Set Wallpaper</string>
+    <string name="refresh">Refresh</string>
+</resources>
